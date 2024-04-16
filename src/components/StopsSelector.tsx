@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './StopsSelector.css'
+import CheckboxOption from './CheckboxOption'
 
 export default function StopsSelector() {
   const [isCheckedAll, setIsCheckedAll] = useState(false)
@@ -37,75 +38,35 @@ export default function StopsSelector() {
     <div className="stops-selector-container">
       <h5 className="stops-title">КОЛИЧЕСТВО ПЕРЕСАДОК</h5>
       <div className="checkbox-group">
-        <label>
-          <input
-            type="checkbox"
-            checked={isCheckedAll}
-            onClick={() => handleCheckAll(!isCheckedAll)}
-          />
-          <span className="custom-checkbox"></span>
-          Все
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked1}
-            onClick={() => setIsChecked1(!isChecked1)}
-          />
-          <span className="custom-checkbox"></span>
-          <span>Без пересадок</span>
-          <span
-            className="checkbox-only-option"
-            onClick={() => handleCheckAll(false)}
-          >
-            Только
-          </span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked2}
-            onClick={() => setIsChecked2(!isChecked2)}
-          />
-          <span className="custom-checkbox"></span>
-          <span>1 пересадка</span>
-          <span
-            className="checkbox-only-option"
-            onClick={() => handleCheckAll(false)}
-          >
-            Только
-          </span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked3}
-            onClick={() => setIsChecked3(!isChecked3)}
-          />
-          <span className="custom-checkbox"></span>
-          <span>2 пересадки</span>
-          <span
-            className="checkbox-only-option"
-            onClick={() => handleCheckAll(false)}
-          >
-            Только
-          </span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked4}
-            onClick={() => setIsChecked4(!isChecked4)}
-          />
-          <span className="custom-checkbox"></span>
-          <span>3 пересадки</span>
-          <span
-            className="checkbox-only-option"
-            onClick={() => handleCheckAll(false)}
-          >
-            Только
-          </span>
-        </label>
+        <CheckboxOption
+          checked={isCheckedAll}
+          option="Все"
+          clickHandler={() => handleCheckAll(!isCheckedAll)}
+        />
+        <CheckboxOption
+          checked={isChecked1}
+          option="Без пересадок"
+          clickHandler={() => setIsChecked1(!isChecked1)}
+          onlyClickHandler={() => handleCheckAll(false)}
+        />
+        <CheckboxOption
+          checked={isChecked2}
+          option="1 пересадка"
+          clickHandler={() => setIsChecked2(!isChecked2)}
+          onlyClickHandler={() => handleCheckAll(false)}
+        />
+        <CheckboxOption
+          checked={isChecked3}
+          option="2 пересадки"
+          clickHandler={() => setIsChecked3(!isChecked3)}
+          onlyClickHandler={() => handleCheckAll(false)}
+        />
+        <CheckboxOption
+          checked={isChecked4}
+          option="3 пересадки"
+          clickHandler={() => setIsChecked4(!isChecked4)}
+          onlyClickHandler={() => handleCheckAll(false)}
+        />
       </div>
     </div>
   )

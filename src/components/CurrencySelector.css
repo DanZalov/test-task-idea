@@ -1,0 +1,29 @@
+.currency-selector-container {
+  padding: 20px;
+}
+
+.currency-title {
+  margin: 0px;
+  margin-bottom: 15px;
+}
+
+.currency-selector-wrapper {
+  display: flex;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.currency-selector-option {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+}
+
+.currency-selector-option.active {
+  background-color: #007bff;
+  color: #ffffff;
+}

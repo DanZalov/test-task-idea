@@ -1,7 +1,12 @@
 import './App.css'
+import Card from './components/Card'
+import Options from './components/Options'
 
-function App() {
-  return <div className="App"></div>
+export default function App() {
+  return (
+    <div className="App">
+      <Options />
+      <Card />
+    </div>
+  )
 }
-
-export default App

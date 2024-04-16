@@ -9,8 +9,6 @@
 
 .currency-selector-wrapper {
   display: flex;
-  border: 1px solid #cccccc;
-  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -19,8 +17,34 @@
   padding: 15px 20px;
   border: none;
   background-color: #ffffff;
-  color: #000000;
+  color: #007bff;
   cursor: pointer;
+  border: 1px solid #cccccc;
+}
+
+.currency-selector-option:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: none;
+}
+
+.currency-selector-option:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: none;
+}
+
+.currency-selector-option:hover {
+  background-color: #f6f9fc;
+  border: 1px solid #007bff;
+}
+
+.currency-selector-option:first-child:hover {
+  border-right: none;
+}
+
+.currency-selector-option:last-child:hover {
+  border-left: none;
 }
 
 .currency-selector-option.active {

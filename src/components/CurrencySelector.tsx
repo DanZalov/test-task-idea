@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './CurrencySelector.css'
+import { CurrencyContext } from '../App'
 
 export default function CurrencySelector() {
-  const [activeOption, setActiveOption] = useState(1)
-
+  const { value: activeOption, setValue: setActiveOption } =
+    useContext(CurrencyContext)
   return (
     <div className="currency-selector-container">
       <h5 className="currency-title">ВАЛЮТА</h5>

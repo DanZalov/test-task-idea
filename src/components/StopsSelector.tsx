@@ -1,38 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './StopsSelector.css'
 import CheckboxOption from './CheckboxOption'
+import { StopsContext } from '../App'
 
 export default function StopsSelector() {
+  const {
+    value: checkedArr,
+    setValue: setCheckedArrElem,
+    setArray,
+  } = useContext(StopsContext)
   const [isCheckedAll, setIsCheckedAll] = useState(false)
-  const [isChecked1, setIsChecked1] = useState(false)
-  const [isChecked2, setIsChecked2] = useState(false)
-  const [isChecked3, setIsChecked3] = useState(false)
-  const [isChecked4, setIsChecked4] = useState(false)
+  const stopsStringArr = [
+    'Без пересадок',
+    '1 пересадка',
+    '2 пересадки',
+    '3 пересадки',
+  ]
 
   function handleCheckAll(checked: boolean) {
     setIsCheckedAll(checked)
-    setIsChecked1(checked)
-    setIsChecked2(checked)
-    setIsChecked3(checked)
-    setIsChecked4(checked)
+    setArray(checked)
   }
 
   useEffect(() => {
-    if (
-      isCheckedAll &&
-      (!isChecked1 || !isChecked2 || !isChecked3 || !isChecked4)
-    ) {
+    if (isCheckedAll && checkedArr.includes(false)) {
       setIsCheckedAll(!isCheckedAll)
-    } else if (
-      !isCheckedAll &&
-      isChecked1 &&
-      isChecked2 &&
-      isChecked3 &&
-      isChecked4
-    ) {
+    } else if (!isCheckedAll && !checkedArr.includes(false)) {
       setIsCheckedAll(!isCheckedAll)
     }
-  }, [isChecked1, isChecked2, isChecked3, isChecked4])
+  }, [checkedArr])
 
   return (
     <div className="stops-selector-container">
@@ -43,30 +39,17 @@ export default function StopsSelector() {
           option="Все"
           clickHandler={() => handleCheckAll(!isCheckedAll)}
         />
-        <CheckboxOption
-          checked={isChecked1}
-          option="Без пересадок"
-          clickHandler={() => setIsChecked1(!isChecked1)}
-          onlyClickHandler={() => handleCheckAll(false)}
-        />
-        <CheckboxOption
-          checked={isChecked2}
-          option="1 пересадка"
-          clickHandler={() => setIsChecked2(!isChecked2)}
-          onlyClickHandler={() => handleCheckAll(false)}
-        />
-        <CheckboxOption
-          checked={isChecked3}
-          option="2 пересадки"
-          clickHandler={() => setIsChecked3(!isChecked3)}
-          onlyClickHandler={() => handleCheckAll(false)}
-        />
-        <CheckboxOption
-          checked={isChecked4}
-          option="3 пересадки"
-          clickHandler={() => setIsChecked4(!isChecked4)}
-          onlyClickHandler={() => handleCheckAll(false)}
-        />
+        {checkedArr.map((checked, index) => {
+          return (
+            <CheckboxOption
+              key={index}
+              checked={checked}
+              option={stopsStringArr[index]}
+              clickHandler={() => setCheckedArrElem(index, !checked)}
+              onlyClickHandler={() => handleCheckAll(false)}
+            />
+          )
+        })}
       </div>
     </div>
   )

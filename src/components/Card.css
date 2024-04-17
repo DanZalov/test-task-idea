@@ -38,6 +38,7 @@
 .flight-info-dest {
   display: flex;
   flex-direction: column;
+  width: 150px;
 }
 
 .flight-info-dest {

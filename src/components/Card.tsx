@@ -1,14 +1,16 @@
 import './Card.css'
-import TicketsObj from '../tickets.json'
 import getDataInfo from '../utilities/GetDataInfo'
+import { TicketData } from '../App'
 
-export default function Card() {
-  const tickets = [...TicketsObj.tickets]
+interface CardProps {
+  ticket: TicketData
+}
 
+export default function Card({ ticket }: CardProps) {
   function getStopsString(stops: number) {
     switch (stops) {
       case 0:
-        return ''
+        return 'прямой'
       case 1:
         return '1 пересадка'
       case 2:
@@ -23,30 +25,28 @@ export default function Card() {
       <div className="buy-part">
         <div className="buy-part-airline">
           <img
-            src={`${tickets[0].carrier}.png`}
-            alt={`${tickets[0].carrier} logo`}
+            src={`${ticket.carrier}.png`}
+            alt={`${ticket.carrier} logo`}
             width={150}
           />
         </div>
         <button className="buy-part-btn">
-          Купить <br /> за {tickets[0].price}
+          Купить <br /> за {ticket.price}
         </button>
       </div>
       <hr className="card-hr" />
       <div className="flight-info">
         <div className="flight-info-depart">
-          <div className="flight-info-depart-time">
-            {tickets[0].departure_time}
-          </div>
+          <div className="flight-info-depart-time">{ticket.departure_time}</div>
           <div>
             <strong>
-              {tickets[0].origin}, {tickets[0].origin_name}
+              {ticket.origin}, {ticket.origin_name}
             </strong>
           </div>
-          <div>{getDataInfo(tickets[0].departure_date)}</div>
+          <div>{getDataInfo(ticket.departure_date)}</div>
         </div>
         <div className="flight-info-stops">
-          <div>{getStopsString(tickets[0].stops)}</div>
+          <div>{getStopsString(ticket.stops)}</div>
           <div className="flight-info-stops-iconbar">
             <hr className="flight-info-stops-iconbar-line" />
             <img
@@ -58,15 +58,13 @@ export default function Card() {
           </div>
         </div>
         <div className="flight-info-dest">
-          <div className="flight-info-depart-time">
-            {tickets[0].arrival_time}
-          </div>
+          <div className="flight-info-depart-time">{ticket.arrival_time}</div>
           <div>
             <strong>
-              {tickets[0].destination}, {tickets[0].destination_name}
+              {ticket.destination}, {ticket.destination_name}
             </strong>
           </div>
-          <div>{getDataInfo(tickets[0].arrival_date)}</div>
+          <div>{getDataInfo(ticket.arrival_date)}</div>
         </div>
       </div>
     </div>

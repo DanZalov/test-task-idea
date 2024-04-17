@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import CurrencySelector from './CurrencySelector'
 import StopsSelector from './StopsSelector'
 

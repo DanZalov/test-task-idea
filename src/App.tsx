@@ -6,8 +6,8 @@ import {
   useState,
 } from 'react'
 import './App.css'
-import Card from './components/Card'
-import Options from './components/Options'
+import Card from './components/Card/Card'
+import Options from './components/Options/Options'
 import TicketsObj from './tickets.json'
 import useExchangeRates from './hooks/useExchangeRates'
 

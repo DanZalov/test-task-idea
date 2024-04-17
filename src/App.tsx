@@ -92,6 +92,9 @@ export default function App() {
             {filteredTickets.map((ticket, index) => (
               <Card ticket={ticket} key={index} />
             ))}
+            {!filteredTickets[0] ? (
+              <h1 className="no-cards">Рейсов не найдено...</h1>
+            ) : null}
           </div>
         </div>
       </StopsContext.Provider>

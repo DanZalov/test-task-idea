@@ -18,6 +18,13 @@
   flex-direction: column;
 }
 
+.no-cards {
+  position: absolute;
+  text-align: center;
+  top: 25%;
+  left: 50%;
+}
+
 .card {
   display: flex;
   flex-direction: row;

@@ -9,7 +9,7 @@ import './App.css'
 import Card from './components/Card'
 import Options from './components/Options'
 import TicketsObj from './tickets.json'
-import getExchangeRate from './utilities/GetExchangeRate'
+import useExchangeRates from './hooks/useExchangeRates'
 
 export type TicketData = (typeof TicketsObj.tickets)[0]
 
@@ -45,8 +45,6 @@ export default function App() {
   const [filteredTickets, setFilteredTickets] = useState(
     [...tickets].sort((ticketA, ticketB) => ticketA.price - ticketB.price),
   )
-  const [usdRate, setUsdRate] = useState(0.01)
-  const [euroRate, setEuroRate] = useState(0.01)
 
   function updateArrayElement(index: number, value: boolean) {
     const newArray = [...stopArray]
@@ -58,12 +56,7 @@ export default function App() {
     setStopArray(newArray)
   }
 
-  useEffect(() => {
-    getExchangeRate().then((res) => {
-      setUsdRate(res?.usd)
-      setEuroRate(res?.euro)
-    })
-  }, [])
+  const { usdRate, euroRate } = useExchangeRates()
 
   useEffect(() => {
     let tempTickets = [...tickets]

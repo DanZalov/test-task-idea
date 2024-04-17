@@ -1,0 +1,67 @@
+.buy-part {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.buy-part-airline {
+  padding: 20px;
+  padding-top: 0px;
+  width: 150px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.buy-part-btn {
+  background-color: rgb(255, 106, 0);
+  color: white;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: large;
+}
+
+.card-hr {
+  margin: 0px;
+}
+
+.flight-info {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.flight-info-depart,
+.flight-info-dest {
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-info-dest {
+  align-items: end;
+}
+
+.flight-info-stops {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.flight-info-depart-time {
+  font-size: 40px;
+}
+
+.flight-info-stops-iconbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.flight-info-stops-iconbar-line {
+  width: 200px;
+  height: 0px;
+  border: 1.5px solid #cccccc;
+}

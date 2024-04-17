@@ -5,4 +5,43 @@
 
 .options {
   width: 300px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  height: 170px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  animation: shadow-animation-in 0.3s ease forwards;
+}
+
+.card:not(:hover) {
+  animation: shadow-animation-out 0.3s ease forwards;
+}
+
+@keyframes shadow-animation-in {
+  0% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes shadow-animation-out {
+  0% {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }

@@ -9,7 +9,7 @@ export default function StopsSelector() {
     setValue: setCheckedArrElem,
     setArray,
   } = useContext(StopsContext)
-  const [isCheckedAll, setIsCheckedAll] = useState(false)
+  const [isCheckedAll, setIsCheckedAll] = useState(true)
   const stopsStringArr = [
     'Без пересадок',
     '1 пересадка',

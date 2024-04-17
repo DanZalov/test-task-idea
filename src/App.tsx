@@ -9,12 +9,15 @@ import './App.css'
 import Card from './components/Card'
 import Options from './components/Options'
 import TicketsObj from './tickets.json'
+import getExchangeRate from './utilities/GetExchangeRate'
 
 export type TicketData = (typeof TicketsObj.tickets)[0]
 
 interface CurrencyContextProps {
-  value: number
-  setValue: Dispatch<SetStateAction<number>>
+  currencyIndex: number
+  setCurrencyIndex: Dispatch<SetStateAction<number>>
+  usdRate: number
+  euroRate: number
 }
 
 interface StopsContextProps {
@@ -24,8 +27,10 @@ interface StopsContextProps {
 }
 
 export const CurrencyContext = createContext<CurrencyContextProps>({
-  value: 1,
-  setValue: () => {},
+  currencyIndex: 1,
+  setCurrencyIndex: () => {},
+  usdRate: 0.01,
+  euroRate: 0.01,
 })
 export const StopsContext = createContext<StopsContextProps>({
   value: [],
@@ -40,6 +45,9 @@ export default function App() {
   const [filteredTickets, setFilteredTickets] = useState(
     [...tickets].sort((ticketA, ticketB) => ticketA.price - ticketB.price),
   )
+  const [usdRate, setUsdRate] = useState(0.01)
+  const [euroRate, setEuroRate] = useState(0.01)
+
   function updateArrayElement(index: number, value: boolean) {
     const newArray = [...stopArray]
     newArray[index] = value
@@ -49,6 +57,13 @@ export default function App() {
     const newArray = new Array(4).fill(value)
     setStopArray(newArray)
   }
+
+  useEffect(() => {
+    getExchangeRate().then((res) => {
+      setUsdRate(res?.usd)
+      setEuroRate(res?.euro)
+    })
+  }, [])
 
   useEffect(() => {
     let tempTickets = [...tickets]
@@ -64,7 +79,12 @@ export default function App() {
 
   return (
     <CurrencyContext.Provider
-      value={{ value: currency, setValue: setCurrency }}
+      value={{
+        currencyIndex: currency,
+        setCurrencyIndex: setCurrency,
+        usdRate,
+        euroRate,
+      }}
     >
       <StopsContext.Provider
         value={{

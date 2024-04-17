@@ -3,7 +3,7 @@ import './CurrencySelector.css'
 import { CurrencyContext } from '../App'
 
 export default function CurrencySelector() {
-  const { value: activeOption, setValue: setActiveOption } =
+  const { currencyIndex: activeOption, setCurrencyIndex: setActiveOption } =
     useContext(CurrencyContext)
   return (
     <div className="currency-selector-container">

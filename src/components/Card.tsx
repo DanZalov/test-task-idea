@@ -1,12 +1,14 @@
 import './Card.css'
 import getDataInfo from '../utilities/GetDataInfo'
-import { TicketData } from '../App'
+import { CurrencyContext, TicketData } from '../App'
+import { useContext } from 'react'
 
 interface CardProps {
   ticket: TicketData
 }
 
 export default function Card({ ticket }: CardProps) {
+  const { currencyIndex, usdRate, euroRate } = useContext(CurrencyContext)
   function getStopsString(stops: number) {
     switch (stops) {
       case 0:
@@ -17,6 +19,17 @@ export default function Card({ ticket }: CardProps) {
         return '2 пересадки'
       default:
         return '3 пересадки'
+    }
+  }
+
+  function getPrice() {
+    switch (currencyIndex) {
+      case 1:
+        return ticket.price.toString() + ' ₽'
+      case 2:
+        return (ticket.price * usdRate).toFixed(2) + ' $'
+      default:
+        return (ticket.price * euroRate).toFixed(2) + ' \u20AC'
     }
   }
 
@@ -31,7 +44,7 @@ export default function Card({ ticket }: CardProps) {
           />
         </div>
         <button className="buy-part-btn">
-          Купить <br /> за {ticket.price}
+          Купить <br /> за {getPrice()}
         </button>
       </div>
       <hr className="card-hr" />

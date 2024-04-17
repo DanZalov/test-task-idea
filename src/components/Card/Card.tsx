@@ -1,5 +1,5 @@
+import { TicketData } from '../../hooks/useTickets'
 import './Card.css'
-import { TicketData } from '../../App'
 import CardBuyPart from './CardBuyPart'
 import FlightInfoGeoTime from './FlightInfoGeoTime'
 import FlightInfoStops from './FlightInfoStops'

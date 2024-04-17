@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import './StopsSelector.css'
 import CheckboxOption from './CheckboxOption'
-import { StopsContext } from '../../App'
+import { StopsContext } from '../../context/StopsContext'
 
 export default function StopsSelector() {
   const {

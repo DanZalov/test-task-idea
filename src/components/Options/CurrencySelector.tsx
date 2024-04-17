@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import './CurrencySelector.css'
-import { CurrencyContext } from '../../App'
+import { CurrencyContext } from '../../context/CurrencyContext'
 
 export default function CurrencySelector() {
   const { currencyIndex: activeOption, setCurrencyIndex: setActiveOption } =

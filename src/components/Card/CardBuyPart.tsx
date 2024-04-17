@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { CurrencyContext } from '../../App'
+import { CurrencyContext } from '../../context/CurrencyContext'
 
 interface CardBuyPartProps {
   ticketPrice: number

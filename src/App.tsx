@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, createContext, useState } from 'react'
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useEffect,
+  useState,
+} from 'react'
 import './App.css'
 import Card from './components/Card'
 import Options from './components/Options'
@@ -31,6 +37,7 @@ export default function App() {
   const tickets = [...TicketsObj.tickets]
   const [currency, setCurrency] = useState(1)
   const [stopArray, setStopArray] = useState<boolean[]>(new Array(4).fill(true))
+  const [filteredTickets, setFilteredTickets] = useState([...tickets])
   function updateArrayElement(index: number, value: boolean) {
     const newArray = [...stopArray]
     newArray[index] = value
@@ -40,6 +47,17 @@ export default function App() {
     const newArray = new Array(4).fill(value)
     setStopArray(newArray)
   }
+
+  useEffect(() => {
+    let tempTickets = [...tickets]
+    stopArray.forEach((show, index) => {
+      if (!show) {
+        tempTickets = tempTickets.filter((ticket) => ticket.stops !== index)
+      }
+    })
+    setFilteredTickets(tempTickets)
+  }, [stopArray])
+
   return (
     <CurrencyContext.Provider
       value={{ value: currency, setValue: setCurrency }}
@@ -54,7 +72,7 @@ export default function App() {
         <div className="App">
           <Options />
           <div className="cards">
-            {tickets.map((ticket, index) => (
+            {filteredTickets.map((ticket, index) => (
               <Card ticket={ticket} key={index} />
             ))}
           </div>

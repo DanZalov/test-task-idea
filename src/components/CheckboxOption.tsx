@@ -15,7 +15,7 @@ export default function CheckboxOption({
 }: CheckboxOptionProps) {
   return (
     <label>
-      <input type="checkbox" checked={checked} onClick={clickHandler} />
+      <input type="checkbox" checked={checked} onChange={clickHandler} />
       <span className="custom-checkbox"></span>
       <span>{option}</span>
       {onlyClickHandler && <CheckboxOnlyOption handler={onlyClickHandler} />}

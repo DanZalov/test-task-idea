@@ -1,5 +1,5 @@
 import './Card.css'
-import getDataInfo from '../utilities/GetDataInfo'
+import getDateInfo from '../utilities/GetDateInfo'
 import { CurrencyContext, TicketData } from '../App'
 import { useContext } from 'react'
 
@@ -56,7 +56,7 @@ export default function Card({ ticket }: CardProps) {
               {ticket.origin}, {ticket.origin_name}
             </strong>
           </div>
-          <div>{getDataInfo(ticket.departure_date)}</div>
+          <div>{getDateInfo(ticket.departure_date)}</div>
         </div>
         <div className="flight-info-stops">
           <div>{getStopsString(ticket.stops)}</div>
@@ -77,7 +77,7 @@ export default function Card({ ticket }: CardProps) {
               {ticket.destination}, {ticket.destination_name}
             </strong>
           </div>
-          <div>{getDataInfo(ticket.arrival_date)}</div>
+          <div>{getDateInfo(ticket.arrival_date)}</div>
         </div>
       </div>
     </div>

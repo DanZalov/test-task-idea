@@ -1,4 +1,4 @@
-export default function getDataInfo(dateString: string) {
+export default function getDateInfo(dateString: string) {
   // dateString = '12.05.18';
   const parts = dateString.split('.')
   const day = parseInt(parts[0], 10)

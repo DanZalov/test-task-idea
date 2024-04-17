@@ -37,7 +37,9 @@ export default function App() {
   const tickets = [...TicketsObj.tickets]
   const [currency, setCurrency] = useState(1)
   const [stopArray, setStopArray] = useState<boolean[]>(new Array(4).fill(true))
-  const [filteredTickets, setFilteredTickets] = useState([...tickets])
+  const [filteredTickets, setFilteredTickets] = useState(
+    [...tickets].sort((ticketA, ticketB) => ticketA.price - ticketB.price),
+  )
   function updateArrayElement(index: number, value: boolean) {
     const newArray = [...stopArray]
     newArray[index] = value
@@ -55,7 +57,9 @@ export default function App() {
         tempTickets = tempTickets.filter((ticket) => ticket.stops !== index)
       }
     })
-    setFilteredTickets(tempTickets)
+    setFilteredTickets(
+      tempTickets.sort((ticketA, ticketB) => ticketA.price - ticketB.price),
+    )
   }, [stopArray])
 
   return (
